@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app/client
+    entrypoint: ["npm","start"]
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server:/app/server
+    entrypoint: ["npm", "run", "start:prod"] 
