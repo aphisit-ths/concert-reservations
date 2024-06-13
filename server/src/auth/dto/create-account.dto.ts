@@ -1,4 +1,4 @@
-import {IsEmail, IsNotEmpty, max, maxLength, min, minLength} from 'class-validator';
+import {IsNotEmpty} from 'class-validator';
 
 export class CreateAccountDto {
     @IsNotEmpty()
