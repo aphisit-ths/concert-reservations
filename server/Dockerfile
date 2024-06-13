@@ -9,5 +9,5 @@ FROM build AS app
 ARG serverPort=4000
 
 WORKDIR /server
-COPY --from=build ./server ./ --ignore=node_modules
+COPY --from=build ./server ./ --ignore=node_modules/
 EXPOSE $serverPort

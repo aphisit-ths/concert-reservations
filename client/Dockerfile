@@ -16,6 +16,6 @@ ARG clientPort=3000
 
 WORKDIR /client
 
-COPY --from=build ./client ./ --ignore=node_modules
+COPY --from=build ./client ./ --ignore=node_modules/
 
 EXPOSE $clientPort
