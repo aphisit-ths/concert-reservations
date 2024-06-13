@@ -19,3 +19,15 @@ model HealthCheck {
 
   @@map("healthcheck")
 }
+
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  password  String
+  isAdmin   Boolean   @default(false) @map("is_admin")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @map("updated_at")
+  deletedAt DateTime? @updatedAt @map("deleted_at")
+
+  @@map("user")
+}
