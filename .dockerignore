@@ -1,0 +1,29 @@
+# Ignore node_modules for both client and server services
+**/node_modules
+
+# Ignore npm debug logs
+npm-debug.log
+
+# Ignore yarn debug logs
+yarn-debug.log
+
+# Ignore yarn error logs
+yarn-error.log
+
+# Ignore .env files
+# Ignore any temporary files
+*.tmp
+
+# Ignore any log files
+*.log
+
+# Ignore editor-specific files
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Docker-related files and directories
+.dockerignore
+docker-compose.yml
+Dockerfile
+.docker

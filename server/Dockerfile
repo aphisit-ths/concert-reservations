@@ -1,19 +1,16 @@
 # Use an official Node.js runtime as a parent image
 FROM node:20-slim AS build
 
-RUN apt-get update -y && apt-get install -y openssl
-
 WORKDIR /server
 
 COPY package*.json ./
-
 
 
 RUN npm install
 
 COPY . .
 
-RUN npx prisma migrate dev
+RUN npx prisma migrate deploy
 RUN npm run build
 
 FROM node:20-slim AS app
