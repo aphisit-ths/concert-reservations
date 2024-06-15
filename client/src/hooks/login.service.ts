@@ -22,11 +22,11 @@ export default async function login(username: string, password: string): Promise
     });
     const parsedResponse: LoginHandlerType = await res.json();
 
-
     if (!res.ok) {
         return parsedResponse as ServerException
     }
     setAuthCookie(res)
+    redirect('/')
     return parsedResponse as LoginResponse
 }
 const setAuthCookie = (response: Response) => {
