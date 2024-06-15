@@ -27,7 +27,7 @@ model User {
   isAdmin   Boolean   @default(false) @map("is_admin")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @default(now()) @map("updated_at")
-  deletedAt DateTime? @updatedAt @map("deleted_at")
+  deleted Boolean @default(false)
 
   @@map("user")
 }
