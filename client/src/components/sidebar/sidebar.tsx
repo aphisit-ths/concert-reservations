@@ -5,20 +5,17 @@ import SidebarDesktop from "@/components/sidebar/sidebar-desktop";
 import SidebarMobile from "@/components/sidebar/sidebar-mobile";
 import { Home, Inbox} from "lucide-react";
 import {SidebarItems} from "@/types/sidebar-items.type";
+import {sidebarItems} from '@/constants/sidebar'
 
-const sidebarItems: SidebarItems = {
-    links: [
-        { label: 'Home', href: '/', icon: Home },
-        { label: 'History', href: '/', icon: Inbox },
-    ],
-};
-export function Sidebar() {
-    const isDesktop = useMediaQuery('(min-width: 640px)', {
+export function  Sidebar() {
+    const isDesktop = useMediaQuery('(min-width: 800px)', {
         initializeWithValue:false
     })
     if (isDesktop) {
-        return <SidebarDesktop sidebarItems={sidebarItems}/>
+        return <SidebarDesktop
+            sidebarItems={sidebarItems}/>
     }
 
-    return <SidebarMobile sidebarItems={sidebarItems} />
+    return <SidebarMobile
+        sidebarItems={sidebarItems} />
 }

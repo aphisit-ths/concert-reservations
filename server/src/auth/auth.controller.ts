@@ -3,6 +3,8 @@ import {AuthService} from './auth.service';
 import {CreateAccountDto} from "./dto/create-account.dto";
 import {LocalAuthGuard} from "./local-auth.guard";
 
+import { AuthGuard } from '@nestjs/passport';
+
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {
@@ -19,7 +21,7 @@ export class AuthController {
         }
     }
 
-    @UseGuards(LocalAuthGuard)
+    @UseGuards(AuthGuard('jwt'))
     @Get("/me")
     async me(@Request() req) {
         return this.authService.getMe(req.user);

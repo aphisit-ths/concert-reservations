@@ -4,6 +4,7 @@ import {API_URI} from "@/constants";
 import {LoginRequest} from "@/types/auth.type";
 import { ServerException} from "@/utils/errors";
 import {cookies} from "next/headers";
+import {redirect} from 'next/navigation'
 
 interface LoginResponse {
     message: string

@@ -5,5 +5,11 @@ export interface SidebarItems {
         label: string;
         href: string;
         icon?: LucideIcon;
+        requireAuthenticate:boolean,
+        adminOnly: boolean
     }>;
+}
+
+export interface SidebarMenuProps {
+    sidebarItems: SidebarItems;
 }
