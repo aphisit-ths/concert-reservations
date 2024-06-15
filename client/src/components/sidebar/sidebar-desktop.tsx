@@ -1,14 +1,7 @@
 'use client'
 
-import {SidebarItems, SidebarMenuProps} from '@/types/sidebar-items.type'
-import {usePathname} from 'next/navigation'
-import {SidebarButton} from '@/components/sidebar/sidebar-button'
-import {LogOut, Users} from 'lucide-react'
-import AuthenticationButton from '@/components/authentication/authentication-button'
+import {SidebarMenuProps} from '@/types/sidebar-items.type'
 import {useAuthContext} from '@/context/auth-context'
-import {Separator} from '@/components/ui/separator'
-import Link from 'next/link'
-import Spinner from '@/components/loader/spinner'
 import {SkeletonLoader} from '@/components/loader/skeleton'
 import SidebarMenu from '@/components/sidebar/sidebar-menu'
 

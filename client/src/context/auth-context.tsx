@@ -1,7 +1,7 @@
 import React, {createContext, useState, useContext, useEffect} from 'react'
 import {MeResponse} from '@/types/auth.type'
 import axios from 'axios'
-import {toast, useToast} from '@/components/ui/use-toast'
+import {useToast} from '@/components/ui/use-toast'
 
 interface AuthContextProps {
     me: MeResponse | null;

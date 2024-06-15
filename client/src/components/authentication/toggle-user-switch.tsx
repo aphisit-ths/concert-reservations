@@ -52,8 +52,3 @@ export default function ToggleUserSwitch() {
         </>
     )
 }
-
-function ToggleButton({me} : {me: MeResponse}) {
-    return
-}
-

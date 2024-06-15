@@ -6,11 +6,8 @@ import {
     SheetTrigger
 } from '@/components/ui/sheet'
 import {Button} from '@/components/ui/button'
-import {SidebarButton} from '@/components/sidebar/sidebar-button'
 import {Menu, X} from 'lucide-react'
 import {SidebarItems} from '@/types/sidebar-items.type'
-import Link from 'next/link'
-import {usePathname} from 'next/navigation'
 import SidebarMenu from '@/components/sidebar/sidebar-menu'
 
 interface SidebarMobileProps {

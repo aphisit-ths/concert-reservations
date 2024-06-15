@@ -1,5 +1,5 @@
 'use client'
-import {Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from '@/components/ui/dialog'
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from '@/components/ui/dialog'
 import {LogIn} from 'lucide-react'
 import {Card, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import login from '@/hooks/login.service'

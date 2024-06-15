@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {SidebarButtonSheet ,SidebarButton} from '@/components/sidebar/sidebar-button'
+import {SidebarButton} from '@/components/sidebar/sidebar-button'
 import {Separator} from '@/components/ui/separator'
 import {LogOut} from 'lucide-react'
 import AuthenticationButton from '@/components/authentication/authentication-button'
@@ -70,7 +70,7 @@ function SubMenus({items, pathname, isAuthenticated, adminOnly}: {
     };
 
     const filteredLinks = getFilteredLinks();
-    return (filteredLinks.map((link, index) => (
+    return (filteredLinks.map((link) => (
         <div key={link.label}>
             {isAuthenticated || !link.requireAuthenticate ? (
                 <Link href={link.href} key={link.label}>
