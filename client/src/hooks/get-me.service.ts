@@ -1,15 +1,15 @@
 import {MeResponse} from '@/types/auth.type'
 import {cookies} from 'next/headers'
-import {API_URI} from '@/constants'
+import {API_URI, COOKIE_NAME} from '@/constants'
 
-const getHeaders = (): HeadersInit => ({
-    Cookie: cookies().toString(),
-})
 
 export const getMe = async (): Promise<MeResponse | null> => {
+    const token = cookies().get(COOKIE_NAME)
     try {
         const res = await fetch(`${API_URI}/auth/me`, {
-            headers: {...getHeaders()},
+            headers: {
+                Cookie :`${COOKIE_NAME}=${token?.value}`
+            },
         })
         if (res.ok) {
             return await res.json()
