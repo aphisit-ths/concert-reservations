@@ -13,11 +13,12 @@ export default function ToggleUserSwitch() {
     async function onLogin() {
         if(me){
             try {
-                let request : LoginRequest
-                if(me.isAdmin){
-                    request = defaultUsers.findLast(user => !user.admin)!.request
+                var request : LoginRequest 
+                if(!me.isAdmin){
+                    const requestIndex = defaultUsers.findIndex(user => user.admin)
+                    request = defaultUsers[requestIndex].request
                 } else {
-                    request = defaultUsers.findLast(user => user.admin)!.request
+                    request = defaultUsers[2].request
                 }
                 await login(request.username, request.password)
                 toast({

@@ -53,7 +53,7 @@ const LoginDialog = () => {
         <DialogHeader>
           <DialogTitle>Which role your want to process ?</DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-1">
+        <div className="grid grid-cols-1 ">
           {defaultUsers.map((user) => (
             <Card
               key={user.title}

@@ -4,16 +4,36 @@ import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
-async function seedDefualtUser() {
-  console.log('start seeding defualt account');
+async function seedDefaultUser() {
+  console.log('start seeding default account');
   const users: CreateAccountDto[] = [
     {
-      username: 'defualt@admin',
+      username: 'default@admin',
       password: '123456789',
       admin: true,
     },
     {
-      username: 'defualt@user',
+      username: 'default@user1',
+      password: '123456789',
+      admin: false,
+    },
+    {
+      username: 'default@user2',
+      password: '123456789',
+      admin: false,
+    },
+    {
+      username: 'default@user3',
+      password: '123456789',
+      admin: false,
+    },
+    {
+      username: 'default@user4',
+      password: '123456789',
+      admin: false,
+    },
+    {
+      username: 'default@user5',
       password: '123456789',
       admin: false,
     },
@@ -34,7 +54,7 @@ async function main() {
   console.log('start seeding ---------------');
 }
 main()
-  .then(seedDefualtUser)
+  .then(seedDefaultUser)
   .then(async () => {
     await prisma.$disconnect();
   })
