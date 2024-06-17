@@ -13,11 +13,15 @@ COPY . .
 
 RUN npx prisma generate
 
+RUN npm run test:cov
+
 RUN npm run build
 
 FROM node:20.14.0-slim AS final
 
-RUN apt-get update -y && apt-get install -y openssl
+RUN apt-get update -y \
+    && apt-get -y install openssl \
+    && apt-get clean
 
 WORKDIR /server
 

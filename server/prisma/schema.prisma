@@ -16,28 +16,56 @@ model HealthCheck {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique
-  password  String
-  isAdmin   Boolean   @default(false) @map("is_admin")
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @default(now()) @map("updated_at")
-  deleted   Boolean   @default(false)
-  Concert   Concert[]
+  id             Int              @id @default(autoincrement())
+  username       String           @unique
+  password       String
+  isAdmin        Boolean          @default(false) @map("is_admin")
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @default(now()) @map("updated_at")
+  deleted        Boolean          @default(false)
+  concert        Concert[]
+  ceservation    Reservation[]
+  reservationLog ReservationLog[]
 
   @@map("user")
 }
 
 model Concert {
-  id          Int      @id @default(autoincrement())
-  seat        Int      @map("seat")
-  name        String   @map("name")
-  description String   @map("description")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @map("updated_at")
-  deleted     Boolean  @default(false) @map("deleted")
-  userId      Int      @map("user_id")
-  user        User     @relation(fields: [userId], references: [id])
+  id          Int           @id @default(autoincrement())
+  seat        Int           @map("seat")
+  name        String        @map("name")
+  description String        @map("description")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @map("updated_at")
+  deleted     Boolean       @default(false) @map("deleted")
+  userId      Int           @map("user_id")
+  user        User          @relation(fields: [userId], references: [id])
+  reservation Reservation[]
 
   @@map("concert")
+}
+
+model Reservation {
+  id              Int              @id @default(autoincrement())
+  userId          Int              @map("user_id")
+  concertId       Int              @map("concert_id")
+  reservationDate DateTime         @map("reservation_date")
+  status          String           @map("status")
+  user            User             @relation(fields: [userId], references: [id])
+  concert         Concert          @relation(fields: [concertId], references: [id])
+  reservationLogs ReservationLog[]
+
+  @@map("reservation")
+}
+
+model ReservationLog {
+  id            Int         @id @default(autoincrement())
+  reservationId Int         @map("reservation_date")
+  action        String      @map("action")
+  actionDate    DateTime    @default(now()) @map("action_date")
+  userId        Int         @map("user_id")
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+  user          User        @relation(fields: [userId], references: [id])
+
+  @@map("reservation_log")
 }
