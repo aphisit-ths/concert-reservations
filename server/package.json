@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "dev:reset" :"npx prisma migrate reset -f"
+    "dev:reset": "npx prisma migrate reset -f"
   },
   "prisma": {
     "seed": "tsx prisma/seed/seed.ts"
@@ -58,6 +58,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.5.0",
+    "jest-mock-extended": "^3.0.7",
     "passport-jwt": "^4.0.1",
     "prettier": "^3.0.0",
     "prisma": "^5.15.0",
@@ -76,11 +77,14 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "rootDir": "./",
+    "testRegex": "test/unit/.*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
+    "coveragePathIgnorePatterns": [
+      "^(?!.*\\.service\\.ts$)"
+    ],
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
