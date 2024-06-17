@@ -9,7 +9,7 @@ export function SkeletonLoader() {
                 <Skeleton className="h-8 bg-gray-200 w-[150px]" />
                 <Skeleton className="h-8 bg-gray-200 w-[220px]" />
                 <Skeleton className="h-8 bg-gray-200 w-[200px]" />
-                <Skeleton className="h-8 bg-gray-200 w-[2200px]" />
+                <Skeleton className="h-8 bg-gray-200 w-[220px]" />
             </div>
         </div>
     )
