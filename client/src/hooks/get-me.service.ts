@@ -11,6 +11,7 @@ export const getMe = async (): Promise<MeResponse | null> => {
                 Cookie :`${COOKIE_NAME}=${token?.value}`
             },
         })
+        console.log(res)
         if (res.ok) {
             return await res.json()
         }else {

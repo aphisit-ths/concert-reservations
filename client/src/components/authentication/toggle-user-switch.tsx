@@ -1,6 +1,6 @@
 import {SidebarButton} from '@/components/sidebar/sidebar-button'
 import {Users} from 'lucide-react'
-import {LoginRequest, MeResponse} from '@/types/auth.type'
+import {LoginRequest} from '@/types/auth.type'
 import login from '@/hooks/login.service'
 import {useAuthContext} from '@/context/auth-context'
 import {defaultUsers} from '@/constants/auth'
@@ -14,10 +14,11 @@ export default function ToggleUserSwitch() {
         if(me){
             try {
                 let request : LoginRequest
-                if(me.isAdmin){
-                    request = defaultUsers.findLast(user => !user.admin)!.request
+                if(!me.isAdmin){
+                    const requestIndex = defaultUsers.findIndex(user => user.admin)
+                    request = defaultUsers[requestIndex].request
                 } else {
-                    request = defaultUsers.findLast(user => user.admin)!.request
+                    request = defaultUsers[2].request
                 }
                 await login(request.username, request.password)
                 toast({

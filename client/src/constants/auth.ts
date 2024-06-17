@@ -7,54 +7,57 @@ export const defaultUsers: DefaultUserUtil[] = [
         admin: true,
         request:
             {
-                username: 'defualt@admin',
+                username: 'default@admin',
                 password: '123456789'
             }
     },
     {
-        title: 'User',
-        description: 'default user account 1',
+        title: 'User 1',
+        description: 'default user account',
         admin: false,
         request:
             {
-                username: 'defult@user1',
+                username: 'default@user1',
                 password: '123456789'
             }
-    },    
+    },
     {
-        title: 'User',
-        description: 'default user account 2',
+        title: 'User 2',
+        description: 'default user account',
         admin: false,
         request:
             {
-                username: 'defult@user2',
+                username: 'default@user2',
                 password: '123456789'
             }
-    },    {
-        title: 'User',
-        description: 'default user account 3',
+    },
+    {
+        title: 'User 3',
+        description: 'default user account',
         admin: false,
         request:
             {
-                username: 'defult@user3',
+                username: 'default@user3',
                 password: '123456789'
             }
-    },    {
-        title: 'User',
-        description: 'default user account 4',
+    },
+    {
+        title: 'User 4',
+        description: 'default user account',
         admin: false,
         request:
             {
-                username: 'defult@user4',
+                username: 'default@user4',
                 password: '123456789'
             }
-    },    {
-        title: 'User',
-        description: 'default user account 5',
+    },
+    {
+        title: 'User 5',
+        description: 'default user account',
         admin: false,
         request:
             {
-                username: 'defult@user5',
+                username: 'default@user5',
                 password: '123456789'
             }
     },
