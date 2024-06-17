@@ -3,6 +3,9 @@
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/src/**/*.service.ts"
+  ],
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   }

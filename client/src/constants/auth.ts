@@ -20,7 +20,7 @@ export const defaultUsers: DefaultUserUtil[] = [
                 username: 'default@user1',
                 password: '123456789'
             }
-    },    
+    },
     {
         title: 'User 2',
         description: 'default user account',
@@ -30,7 +30,7 @@ export const defaultUsers: DefaultUserUtil[] = [
                 username: 'default@user2',
                 password: '123456789'
             }
-    },  
+    },
     {
         title: 'User 3',
         description: 'default user account',
@@ -40,7 +40,7 @@ export const defaultUsers: DefaultUserUtil[] = [
                 username: 'default@user3',
                 password: '123456789'
             }
-    },    
+    },
     {
         title: 'User 4',
         description: 'default user account',
@@ -50,7 +50,7 @@ export const defaultUsers: DefaultUserUtil[] = [
                 username: 'default@user4',
                 password: '123456789'
             }
-    },   
+    },
     {
         title: 'User 5',
         description: 'default user account',

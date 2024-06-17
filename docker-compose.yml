@@ -9,7 +9,8 @@ services:
       - "3000:3000"
     volumes:
       - ./client:/app/client
-    entrypoint: ["npm","start"]
+    env_file:
+      - ./client/.env.docker
   server:
     build:
       context: ./server
@@ -18,4 +19,7 @@ services:
       - "4000:4000"
     volumes:
       - ./server:/app/server
-    entrypoint: ["npm", "run", "start:prod"] 
+
+networks:
+  default:
+    driver: bridge
