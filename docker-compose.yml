@@ -9,6 +9,8 @@ services:
       - "3000:3000"
     volumes:
       - ./client:/app/client
+    env_file:
+      - ./client/.env.docker
   server:
     build:
       context: ./server
