@@ -21,6 +21,8 @@ The **Concert Reservations** project is a web application built using Next.js fo
 
 ## Setup Options
 
+    
+
 ### Option 1: Run with Single Docker Compose File  (Recommend)
 
 1. **Clone the Repository**
@@ -113,3 +115,33 @@ To stop the running containers, use the following command:
 
 ```sh
 docker-compose down
+```
+
+## Run Unittest for NestJS 
+
+To running unittest and coverage
+
+```sh
+npm run test:cov
+```
+
+## Bonus Task
+- Express your opinion about how to optimize your website in case that this
+  website contains intensive data and when more people access, the lower speed
+  you get? 
+  - sever-side
+    - use in-memory, optimize database query (indexing).
+    - Load balancing strategy .
+  - client-side
+    - Make independent GET API requests in parallel to reduce wait times.
+    - Static Content Caching: Use CDNs to deliver static content faster by caching it closer to users.
+    - Reduce Repaints and Reflows: Optimize CSS and JavaScript to reduce layout thrashing, repaints, and **reflows, which can significantly slow down rendering.**
+
+
+
+- Express your opinion about how to handle when many users want to reserve the
+   ticket at the same time? We want to ensure that in the concerts there is no one
+   that needs to stand up during the show.
+  - Constraints: Implement strict database constraints to ensure data integrity.
+  - Message Queuing: Use Message Queuing to manage reservation requests. Message Queuing easily scale consumers to handle high volumes of requests during peak times.
+  - Lottery system in pre-reservation (Optional): Random user selection for high-demand events, requires confirmation to reduce load and ensure real interest.
