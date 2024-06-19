@@ -4,7 +4,7 @@ import {AppService} from './app.service'
 import {PrismaService} from './prisma/prisma.service'
 import {AuthModule} from './auth/auth.module'
 import {ConfigModule} from '@nestjs/config'
-import { ConcertService } from './concert/concert.service';
+import {ConcertService} from './concert/concert.service'
 import {ConcertModule} from './concert/concert.module'
 
 @Module({

@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import login from '@/hooks/login.service'
+import login from '@/hooks/auth/login.service'
 import { LoginRequest } from '@/types/auth.type'
 import { useAuthContext } from '@/context/auth-context'
 import { defaultUsers } from '@/constants/auth'
@@ -37,7 +37,7 @@ const LoginDialog = () => {
       toast({
         variant: 'destructive',
         title: 'Login fail !',
-        description: `You just logged fail ${e}`,
+        description: `Login fail ${e}`,
       })
       console.error('unexpected error', e)
     }

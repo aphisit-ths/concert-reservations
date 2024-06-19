@@ -3,13 +3,19 @@ actor Public_User as PU
 actor User as U
 actor Admin as A
 
-PU --> (See Detail of Concert)
-U --> (See Detail of Concert)
+A --> (See Summary)
+A --> (See Detail of Concerts)
+A --> (Delete Concert)
+A --> (Create Concert)
+A --> (Concert Reservation History )
+
+
+PU --> (See Detail of Concerts)
+
+U --> (See Detail of Concerts)
 U --> (Reserve Concert)
 U --> (Cancel Reserve Concert)
-A --> (Create Concert)
-A --> (Update Concert)
-A --> (Delete Concert)
-A --> (See Detail of Concert)
+U --> (Concert Own Reservation History)
+
 
 @enduml
