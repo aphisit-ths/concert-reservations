@@ -2,8 +2,8 @@
 
 import {SidebarMenuProps} from '@/types/sidebar-items.type'
 import {useAuthContext} from '@/context/auth-context'
-import {SkeletonLoader} from '@/components/loader/skeleton'
 import SidebarMenu from '@/components/sidebar/sidebar-menu'
+import {SkeletonLoader} from '@/components/loader/skeleton'
 
 
 

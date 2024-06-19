@@ -21,10 +21,10 @@ type RootLayoutType = Readonly<RootLayoutProps>
 export default function RootLayout({children}: RootLayoutType) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={inter.className+ "bg-gray-100"}>
                 <Providers>
                     <Sidebar/>
-                    <main className="mx-5 mt-16 lg:ml-[300px] sm:mt-3 bg-gray-100">
+                    <main className="mx-5 mt-16 lg:ml-[300px] sm:mt-3 ">
                         {children}
                     </main>
                 </Providers>

@@ -74,19 +74,18 @@ export class AuthService {
         return user
     }
 
-    async getMe(user: User): Promise<Me> {
+    async getMe(user: User): Promise<User> {
         try {
             const me = await this.prisma.user.findUnique({
                 where: {
                     username: user.username,
                 },
+                include:{
+                    reservation: true
+                }
             })
 
-            if (me) {
-                return {username: me.username, isAdmin: me.isAdmin}
-            }
-
-            return null
+            return me
         } catch (e) {
             throw e
         }

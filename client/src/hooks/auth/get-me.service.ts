@@ -1,9 +1,9 @@
-import {MeResponse} from '@/types/auth.type'
+import {User} from '@/types/auth.type'
 import {cookies} from 'next/headers'
 import {API_URI, COOKIE_NAME} from '@/constants'
 
 
-export const getMe = async (): Promise<MeResponse | null> => {
+export const getMe = async (): Promise<User | null> => {
     const token = cookies().get(COOKIE_NAME)
     try {
         const res = await fetch(`${API_URI}/auth/me`, {

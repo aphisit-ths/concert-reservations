@@ -7,5 +7,5 @@ export class GetConcertSummaryDTO {
 }
 export interface GetConcertDTO extends Concert {
     availableStatus: boolean,
-    availableSeat: number
+    countReserved: number
 }

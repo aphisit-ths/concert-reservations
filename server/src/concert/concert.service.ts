@@ -1,4 +1,4 @@
-import {BadRequestException, Injectable} from '@nestjs/common'
+import {BadRequestException, Injectable, Logger} from '@nestjs/common'
 import {IConcertService} from './concert.service.interface'
 import {Concert, User} from '@prisma/client'
 import {PrismaService} from '../prisma/prisma.service'
@@ -9,6 +9,7 @@ import {ReservationStatus} from '../enum/reservation-status.enum'
 
 @Injectable()
 export class ConcertService implements IConcertService {
+    private readonly logger = new Logger(ConcertService.name);
     constructor(private prisma: PrismaService) {
     }
 
@@ -32,14 +33,14 @@ export class ConcertService implements IConcertService {
                         .reservation
                         .filter(ele => ele.status === ReservationStatus.RESERVED)
                         .length < concert.seat,
-                    availableSeat: concert
+                    countReserved: concert
                         .reservation
                         .filter(ele => ele.status === ReservationStatus.RESERVED)
                         .length
                 }
             })
         } catch (e) {
-            console.log(e)
+            this.logger.error(e)
             throw e
         }
     }
@@ -53,7 +54,7 @@ export class ConcertService implements IConcertService {
                 },
             })
         } catch (e) {
-            console.log(e)
+            this.logger.error(e)
             throw e
         }
     }
@@ -82,7 +83,7 @@ export class ConcertService implements IConcertService {
             })
             return {message: 'Created success', concertId: createdConcert.id}
         } catch (e) {
-            console.log(e)
+            this.logger.error(e)
             throw e
         }
     }
@@ -133,7 +134,7 @@ export class ConcertService implements IConcertService {
                 deleted: updatedConcert.deleted
             }
         } catch (e) {
-            console.log(e)
+            this.logger.error(e)
             throw e
         }
     }
@@ -148,7 +149,7 @@ export class ConcertService implements IConcertService {
                 canceled: countOfCanceled, reserved: countOfConfirmed, totalSeat: totalSeat
             }
         } catch (e) {
-            console.log(e)
+            this.logger.error(e)
             throw e
         }
     }
