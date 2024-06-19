@@ -32,7 +32,7 @@ export class ConcertController {
 
     @UseGuards(AuthGuard('jwt'), RolesGuard)
     @HasRoles(Role.Admin)
-    @Delete("/:id/delete")
+    @Delete("/:id/delete-concert")
     async delete(@Param() params) {
         const { id} = params
         return this.concertService.deleteConcert(+id)

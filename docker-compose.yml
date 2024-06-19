@@ -10,7 +10,7 @@ services:
     volumes:
       - ./client:/app/client
     env_file:
-      - ./client/.env.docker
+      - ./client/.env.prod
   server:
     build:
       context: ./server

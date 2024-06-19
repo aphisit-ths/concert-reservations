@@ -37,7 +37,6 @@ describe('ConcertService', () => {
     it('should throw error if name is missing', () => {
         const request: CreateConcertRequestDto = {
             name: null,
-            userId: 1,
             description: 'Testing concert creation',
             seat: 100
         };
@@ -48,7 +47,6 @@ describe('ConcertService', () => {
 
     it('should throw error if description is missing', () => {
         const request: CreateConcertRequestDto = {
-            userId: 1,
             name: 'Test Concert',
             seat: 100,
             description : null
@@ -61,7 +59,6 @@ describe('ConcertService', () => {
     it('should throw error if seat is missing', () => {
         const request: CreateConcertRequestDto = {
             seat: 0,
-            userId: 1,
             name: 'Test Concert',
             description: 'Testing concert creation'
         };
@@ -72,7 +69,6 @@ describe('ConcertService', () => {
 
     it('should throw error if seat is zero or negative', () => {
         const request: CreateConcertRequestDto = {
-            userId: 1,
             name: 'Test Concert',
             description: 'Testing concert creation',
             seat: -24
@@ -84,19 +80,17 @@ describe('ConcertService', () => {
 
     it('should throw error if seat is greater than 10 million', () => {
         const request: CreateConcertRequestDto = {
-            userId: 1,
             name: 'Test Concert',
             description: 'Testing concert creation',
             seat: 20000000
         };
 
         expect(() => service.validateCreateConcertRequest(request)).toThrow(BadRequestException);
-        expect(() => service.validateCreateConcertRequest(request)).toThrow('seat must relate real word');
+        expect(() => service.validateCreateConcertRequest(request)).toThrow('seat must less than 100000');
     });
 
     it('should not throw error if request is valid', () => {
         const request: CreateConcertRequestDto = {
-            userId: 1,
             name: 'Test Concert',
             description: 'Testing concert creation',
             seat: 100

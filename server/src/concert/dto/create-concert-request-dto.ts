@@ -2,7 +2,6 @@ export class CreateConcertRequestDto {
     description: string
     name: string
     seat: number
-    userId: number
 }
 export class BaseConcertDTO {
     message: string

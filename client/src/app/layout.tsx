@@ -24,7 +24,7 @@ export default function RootLayout({children}: RootLayoutType) {
             <body className={inter.className}>
                 <Providers>
                     <Sidebar/>
-                    <main className="mx-5 mt-16 lg:ml-[300px] sm:mt-3">
+                    <main className="mx-5 mt-16 lg:ml-[300px] sm:mt-3 bg-gray-100">
                         {children}
                     </main>
                 </Providers>

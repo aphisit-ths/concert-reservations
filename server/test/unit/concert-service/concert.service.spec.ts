@@ -86,7 +86,6 @@ describe('ConcertService', () => {
             description: 'test_desc',
             name: 'test_concert',
             seat: 12,
-            userId: 1
         }
 
         const createdConcert: Concert = {createdAt: undefined, deleted: false, description: '', name: '', seat: 0, updatedAt: undefined, userId: 0, id: 1}
@@ -99,7 +98,7 @@ describe('ConcertService', () => {
         expect(response.message).toBeDefined()
     })
 
-    it('should delete concert when concert already exist', async () => {
+    it('should delete-concert concert when concert already exist', async () => {
 
         const expected: DeleteConcertDTO = {
             message: 'concert was deleted',
@@ -119,11 +118,11 @@ describe('ConcertService', () => {
         expect(response).toStrictEqual(expected)
 
     })
-    it('should throw when delete concert when concert not already exist', async () => {
+    it('should throw when delete-concert concert when concert not already exist', async () => {
         try {
             prismaMock.concert.findUnique.mockReturnValue(null)
         } catch (e) {
-            expect(e).toStrictEqual(new BadRequestException('delete target not founded'))
+            expect(e).toStrictEqual(new BadRequestException('delete-concert target not founded'))
         }
     })
 
@@ -162,12 +161,12 @@ describe('ConcertService', () => {
 
             prismaMock.reservation.aggregate.mockResolvedValueOnce({_count: {id: count}})
 
-            const result = await service.countByReservationStatus(ReservationStatus.Confirmed)
+            const result = await service.countByReservationStatus(ReservationStatus.RESERVED)
 
             expect(result).toBe(count)
             expect(prismaMock.reservation.aggregate).toHaveBeenCalledWith({
                 where: {
-                    status: ReservationStatus.Confirmed,
+                    status: ReservationStatus.RESERVED,
                     concert: {
                         deleted: false
                     }

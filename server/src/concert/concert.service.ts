@@ -4,7 +4,7 @@ import {Concert, User} from '@prisma/client'
 import {PrismaService} from '../prisma/prisma.service'
 import {CreateConcertRequestDto, CreateConcertResponseDTO} from './dto/create-concert-request-dto'
 import {DeleteConcertDTO} from './dto/delete-concert-request-dto'
-import {GetConcertSummaryDTO} from './dto/get-concert-summary.dto'
+import {GetConcertDTO, GetConcertSummaryDTO} from './dto/get-concert-summary.dto'
 import {ReservationStatus} from '../enum/reservation-status.enum'
 
 @Injectable()
@@ -12,17 +12,30 @@ export class ConcertService implements IConcertService {
     constructor(private prisma: PrismaService) {
     }
 
-    async getConcert(): Promise<Concert[]> {
+    async getConcert(): Promise<GetConcertDTO[]> {
         try {
-            return await this.prisma.concert.findMany({
+            const concerts =  await this.prisma.concert.findMany({
                 orderBy: {
-                    createdAt: 'asc'
+                    createdAt: 'desc'
                 },
                 where: {
                     deleted: false
                 },
                 include:{
                     reservation: true
+                }
+            })
+            return concerts.map(concert => {
+                return {
+                    ...concert,
+                    availableStatus: concert
+                        .reservation
+                        .filter(ele => ele.status === ReservationStatus.RESERVED)
+                        .length < concert.seat,
+                    availableSeat: concert
+                        .reservation
+                        .filter(ele => ele.status === ReservationStatus.RESERVED)
+                        .length
                 }
             })
         } catch (e) {
@@ -54,7 +67,6 @@ export class ConcertService implements IConcertService {
                     username: user.username
                 }
             })
-
             this.adminChecker(admin)
 
             const createdConcert = await this.prisma.concert.create({
@@ -62,7 +74,7 @@ export class ConcertService implements IConcertService {
                     createdAt: new Date(),
                     deleted: false,
                     description: request.description.trim().toLowerCase(),
-                    name: request.description.trim().toLowerCase(),
+                    name: request.name.trim().toLowerCase(),
                     seat: request.seat,
                     updatedAt: new Date(),
                     userId: admin.id
@@ -88,8 +100,8 @@ export class ConcertService implements IConcertService {
             if (request.seat <= 0) {
                 throw new BadRequestException('seat must greater than 0')
             }
-            if (request.seat > 10 * 1000000) {
-                throw new BadRequestException('seat must relate real word')
+            if (request.seat > 100000) {
+                throw new BadRequestException('seat must less than 100000')
             }
         }
     }
@@ -106,7 +118,7 @@ export class ConcertService implements IConcertService {
                 where: {id: id, deleted: false}
             })
             if (!concert) {
-                throw new BadRequestException('delete target not founded')
+                throw new BadRequestException('delete-concert target not founded')
             }
             const updatedConcert = await this.prisma.concert.update({
                 where: {
@@ -128,8 +140,8 @@ export class ConcertService implements IConcertService {
 
     async getSummary(): Promise<GetConcertSummaryDTO> {
         try {
-            const countOfConfirmed = await this.countByReservationStatus(ReservationStatus.Confirmed)
-            const countOfCanceled = await this.countByReservationStatus(ReservationStatus.Canceled)
+            const countOfConfirmed = await this.countByReservationStatus(ReservationStatus.RESERVED)
+            const countOfCanceled = await this.countByReservationStatus(ReservationStatus.CANCELLED)
             const totalSeat = await this.countOfTotalSeat()
 
             return {
@@ -154,7 +166,6 @@ export class ConcertService implements IConcertService {
     }
 
     async countByReservationStatus(status: ReservationStatus): Promise<number> {
-        console.log(status)
         const reservations = await this.prisma.reservation.aggregate({
             where: {
                 status: status,
