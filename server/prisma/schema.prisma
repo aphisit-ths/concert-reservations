@@ -24,7 +24,7 @@ model User {
   updatedAt      DateTime         @default(now()) @map("updated_at")
   deleted        Boolean          @default(false)
   concert        Concert[]
-  ceservation    Reservation[]
+  reservation    Reservation[]
   reservationLog ReservationLog[]
 
   @@map("user")

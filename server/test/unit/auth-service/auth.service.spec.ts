@@ -142,7 +142,6 @@ describe('AuthService', () => {
         expect(response).toStrictEqual(expected)
     })
     it('should return valid value if get me invalid (user not found)', async () => {
-        const expected: Me = {username: mockUser.username, isAdmin: mockUser.isAdmin}
         prismaMock.user.findUnique.mockReturnValue(null)
         const response = await service.getMe(mockUser)
         expect(response).toEqual(null)

@@ -6,6 +6,7 @@ import {AuthModule} from './auth/auth.module'
 import {ConfigModule} from '@nestjs/config'
 import {ConcertService} from './concert/concert.service'
 import {ConcertModule} from './concert/concert.module'
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
     imports: [
@@ -14,7 +15,8 @@ import {ConcertModule} from './concert/concert.module'
             envFilePath: '.env',
         }),
         AuthModule,
-        ConcertModule
+        ConcertModule,
+        ReservationModule
     ],
     controllers: [AppController],
     providers: [AppService, PrismaService, ConcertService],

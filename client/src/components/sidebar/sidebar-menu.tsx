@@ -6,7 +6,7 @@ import AuthenticationButton from '@/components/authentication/authentication-but
 import {usePathname} from 'next/navigation'
 import {useAuthContext} from '@/context/auth-context'
 import {SidebarItems, SidebarMenuProps} from '@/types/sidebar-items.type'
-import {MeResponse} from '@/types/auth.type'
+import {User} from '@/types/auth.type'
 import ToggleUserSwitch from '@/components/authentication/toggle-user-switch'
 
 
@@ -34,7 +34,7 @@ export default function SidebarMenu(props: SidebarMenuProps) {
     )
 }
 
-function SideBarHeader({me}: { me: MeResponse | null }) {
+function SideBarHeader({me}: { me: User | null }) {
     return (
         me ? <h3 className="mx-3 ">
                 Logged as

@@ -1,12 +1,12 @@
 import React, {createContext, useState, useContext, useEffect} from 'react'
-import {MeResponse} from '@/types/auth.type'
+import {User} from '@/types/auth.type'
 import axios from 'axios'
 import {useToast} from '@/components/ui/use-toast'
 
 interface AuthContextProps {
-    me: MeResponse | null;
+    me: User | null;
     isAuthenticated: boolean;
-    onSetMe: (me: MeResponse) => void;
+    onSetMe: (me: User) => void;
     onLogout: () => void;
     fetchMe: () => void;
     loading: boolean
@@ -25,13 +25,13 @@ const AuthContext = createContext<AuthContextProps>({
 })
 
 export function AuthContextProvider({children}: { children: React.ReactNode }) {
-    const [me, setMe] = useState<MeResponse | null>(null)
+    const [me, setMe] = useState<User | null>(null)
     const [loading, setLoading] = useState(false)
     const {toast} = useToast()
 
     const isAuthenticated = !!me
 
-    function onSetMe(newMe: MeResponse) {
+    function onSetMe(newMe: User) {
         setMe(newMe)
     }
 
