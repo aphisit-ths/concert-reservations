@@ -2,7 +2,6 @@ import {Test, TestingModule} from '@nestjs/testing'
 import {ConcertService} from '../../../src/concert/concert.service'
 import {PrismaService} from '../../../src/prisma/prisma.service'
 import {CreateConcertRequestDto} from '../../../src/concert/dto/create-concert-request-dto'
-import {Concert} from '@prisma/client'
 import {BadRequestException} from '@nestjs/common'
 
 const prismaMock = {

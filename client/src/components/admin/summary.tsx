@@ -1,7 +1,6 @@
 'use client'
 import axios, {AxiosResponse} from 'axios'
 import {Card} from '@/components/ui/card'
-import {ServerException} from '@/utils/errors'
 import useSWR from 'swr'
 import {Skeleton} from '@/components/ui/skeleton'
 import {useToast} from '@/components/ui/use-toast'

@@ -1,7 +1,7 @@
 import {ReservationStatus} from '@/types/reservation-status.enum'
 import {GetConcertResponse} from '@/types/concert.type'
 import {useAuthContext} from '@/context/auth-context'
-import {Reservation, User} from '@/types/auth.type'
+import {Reservation} from '@/types/auth.type'
 import axios from 'axios'
 import {API_CANCEL_CLIENT_RESERVATION_URL, API_CREATE_CLIENT_RESERVATION_URL} from '@/constants'
 import {useToast} from '@/components/ui/use-toast'

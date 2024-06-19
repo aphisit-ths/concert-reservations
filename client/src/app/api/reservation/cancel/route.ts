@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server'
-import {API_CANCEL_SERVER_RESERVATION_URL, API_URI} from '@/constants'
+import {API_CANCEL_SERVER_RESERVATION_URL} from '@/constants'
 import {getAuthCookies} from '@/utils/getAuthCookies'
 import {ServerException} from '@/utils/errors'
 

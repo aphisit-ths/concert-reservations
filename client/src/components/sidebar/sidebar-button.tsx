@@ -23,10 +23,3 @@ export function SidebarButton({icon: Icon, className, children, ...props}: Sideb
     );
 }
 
-export function SidebarButtonSheet(props: SidebarButtonProps) {
-    return (
-        <SheetClose asChild>
-            <SidebarButton {...props} />
-        </SheetClose>
-    );
-}

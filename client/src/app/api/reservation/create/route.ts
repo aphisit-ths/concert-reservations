@@ -3,7 +3,7 @@ import { API_CREATE_SERVER_RESERVATION_URL} from '@/constants'
 import {getAuthCookies} from '@/utils/getAuthCookies'
 import {ServerException} from '@/utils/errors'
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request: NextRequest) {
     const payload = await request.json()
     const res = await fetch(API_CREATE_SERVER_RESERVATION_URL, {
         method: 'POST',

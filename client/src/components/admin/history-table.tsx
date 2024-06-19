@@ -1,5 +1,5 @@
 'use client'
-import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/components/ui/table'
 
 import axios, {AxiosResponse} from 'axios'
 import {ConcertEvent} from '@/types/concert.type'

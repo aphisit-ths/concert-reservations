@@ -4,9 +4,7 @@ import {AuthGuard} from '@nestjs/passport'
 import {RolesGuard} from '../auth/guard/role.guard'
 import {HasRoles} from '../auth/decorator/roles.decorator'
 import {Role} from '../enum/role.enum'
-import {CreateConcertRequestDto} from '../concert/dto/create-concert-request-dto'
 import {CancelReservationDTO, CreateReservationDTO} from './dto/create-reservation.dto'
-import {User} from '@prisma/client'
 
 @Controller('reservation')
 export class ReservationController {
